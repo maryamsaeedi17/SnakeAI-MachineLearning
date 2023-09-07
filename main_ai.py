@@ -24,8 +24,8 @@ class Game(arcade.Window):
         arcade.draw_text(f"Score: {self.snake.score}", 8*self.width//10, 20 , arcade.color.WHITE  , bold=True)
 
         if self.game_status=="Game Over":
-            arcade.draw_lrtb_rectangle_filled(0,self.width,self.height,0,arcade.color.BLACK)
-            arcade.draw_text("GAME OVER!", self.width//5 , self.height//2 , arcade.color.RED , 30)
+            arcade.draw_lrtb_rectangle_filled(0, self.width, self.height, 0, arcade.color.BLACK)
+            arcade.draw_text("GAME OVER!", self.width//5, self.height//2, arcade.color.RED, 30)
 
         arcade.finish_render()
 
@@ -71,8 +71,8 @@ class Game(arcade.Window):
 
         self.snake.move()
 
-        if arcade.check_for_collision(self.snake,self.food):
-            self.snake.eat(self.food,1)
+        if arcade.check_for_collision(self.snake, self.food):
+            self.snake.eat(self.food, 1)
             self.food=Apple(self)
 
         self.snake.check_pass_limits(self)
