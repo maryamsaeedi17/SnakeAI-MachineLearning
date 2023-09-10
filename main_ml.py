@@ -1,13 +1,14 @@
 import tensorflow as tf
 import random
 import arcade
+import numpy as np
 
 from apple import Apple
 from snake import Snake
 
 class Game(arcade.Window):
     def __init__(self):
-        super().__init__(width=800, height=400, title="Super Snake 🐍 V2")
+        super().__init__(width=800, height=400, title="Super Snake 🐍 V2-ML")
         arcade.set_background_color(arcade.color.KHAKI)
         self.snake=Snake(self)
         self.food=Apple(self)
@@ -34,41 +35,36 @@ class Game(arcade.Window):
 
         dx=self.snake.center_x - self.food.center_x
         dy=self.snake.center_y - self.food.center_y
-            
-        if dx>0:
-            if dy>0:
-                self.snake.change_x=-1
-                self.snake.change_y=-1
-            elif dy<0:
-                self.snake.change_x=-1
-                self.snake.change_y=1
-            else:
-                self.snake.change_x=-1
-                self.snake.change_y=0
+       
+        data = np.array([[self.snake.center_x, self.snake.center_y, self.food.center_x, self.food.center_y, dx, dy]])
 
-        if dx<0:
-            if dy>0:
-                self.snake.change_x=1
-                self.snake.change_y=-1
-            elif dy<0:
-                self.snake.change_x=1
-                self.snake.change_y=1
-            else:
-                self.snake.change_x=1
-                self.snake.change_y=0   
+        output=self.model.predict(data)
+        direction= output.argmax()
 
-        if dx==0:
-            if dy>0:
-                self.snake.change_x=0
-                self.snake.change_y=-1
-            elif dy<0:
-                self.snake.change_x=0
-                self.snake.change_y=1
-            else:
-                self.snake.change_x=0
-                self.snake.change_y=0    
-
-
+        if direction==0:
+            self.snake.change_x=0
+            self.snake.change_y=1
+        elif direction==1:
+            self.snake.change_x=1
+            self.snake.change_y=1
+        elif direction==2:
+            self.snake.change_x=1
+            self.snake.change_y=0
+        elif direction==3:
+            self.snake.change_x=1
+            self.snake.change_y=-1
+        elif direction==4:
+            self.snake.change_x=0
+            self.snake.change_y=-1
+        elif direction==5:
+            self.snake.change_x=-1
+            self.snake.change_y=-1
+        elif direction==6:
+            self.snake.change_x=-1
+            self.snake.change_y=0
+        elif direction==7:
+            self.snake.change_x=-1
+            self.snake.change_y=1
 
         self.snake.move()
 
