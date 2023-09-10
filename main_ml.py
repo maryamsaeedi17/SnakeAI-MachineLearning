@@ -12,7 +12,7 @@ class Game(arcade.Window):
         arcade.set_background_color(arcade.color.KHAKI)
         self.snake=Snake(self)
         self.food=Apple(self)
-        self.model=tf.keras.models.load_model("my_snake_model.h5")
+        self.model=tf.keras.models.load_model("weights/my_snake_model.h5")
 
         self.game_status="run"
 
@@ -73,8 +73,6 @@ class Game(arcade.Window):
             self.food=Apple(self)
 
         self.snake.check_pass_limits(self)
-
-
 
 game=Game()
 arcade.run()

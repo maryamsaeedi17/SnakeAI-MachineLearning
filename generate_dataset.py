@@ -15,12 +15,10 @@ class Game(arcade.Window):
 
         self.game_status="run"
 
-
     def on_draw(self):
         arcade.start_render()
         self.snake.draw()
         self.food.draw()
-
 
         arcade.draw_text(f"Score: {self.snake.score}", 8*self.width//10, 20 , arcade.color.WHITE  , bold=True)
 
@@ -31,20 +29,6 @@ class Game(arcade.Window):
         arcade.finish_render()
 
     def on_update(self, delta_time: float):
-
-        # data={"w0": None,
-        #       "w1": None,
-        #       "w2": None,
-        #       "w3": None,
-        #       "a0": None,
-        #       "a1": None,
-        #       "a2": None,
-        #       "a3": None,
-        #       "b0": None,
-        #       "b1": None,
-        #       "b2": None,
-        #       "b3": None,
-        #       "direction": None}
 
         data={"x_s": None,
               "y_s": None,
@@ -106,10 +90,6 @@ class Game(arcade.Window):
                 self.snake.change_y=0   
 
         self.dataset.append(data)
-
-
-         
-
     
         self.snake.move()
 
@@ -119,11 +99,10 @@ class Game(arcade.Window):
 
         self.snake.check_pass_limits(self)
 
-
     def on_key_release(self, symbol: int, modifier: int):
         if symbol == arcade.key.Q:
             df = pd.DataFrame(self.dataset)
-            df.to_csv("Output/dataset.csv", index= False)
+            df.to_csv("dataset/dataset.csv", index= False)
             arcade.close_window()
             exit(0)
 

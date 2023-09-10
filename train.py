@@ -2,7 +2,7 @@ import tensorflow as tf
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-data=pd.read_csv("Output/dataset.csv", header=None, skiprows=1)
+data=pd.read_csv("dataset/dataset.csv", header=None, skiprows=1)
 
 X = data.iloc[ : , :-1].values
 Y = data.iloc[ : , -1].values
@@ -22,5 +22,5 @@ model.compile(optimizer="adam",
 
 model.fit(X_train, Y_train, epochs=72)
 model.evaluate(X_test, Y_test)
-model.save("my_snake_model.h5")
+model.save("weights/my_snake_model.h5")
 

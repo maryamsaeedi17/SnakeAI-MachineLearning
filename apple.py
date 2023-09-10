@@ -12,7 +12,7 @@ class Apple(Fruit):
         # self.color=arcade.color.RED
         self.center_x=random.randint(16,game.width-16)//8 *8
         self.center_y=random.randint(16,game.height-16)//8 *8
-        self.pic=arcade.load_texture("Input/apple.png")
+        self.pic=arcade.load_texture("assets/apple.png")
 
     def draw(self):
         #arcade.draw_circle_filled(self.center_x, self.center_y, self.size, self.color)
