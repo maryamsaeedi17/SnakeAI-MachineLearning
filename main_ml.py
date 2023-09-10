@@ -16,12 +16,10 @@ class Game(arcade.Window):
 
         self.game_status="run"
 
-
     def on_draw(self):
         arcade.start_render()
         self.snake.draw()
         self.food.draw()
-
 
         arcade.draw_text(f"Score: {self.snake.score}", 8*self.width//10, 20 , arcade.color.WHITE  , bold=True)
 

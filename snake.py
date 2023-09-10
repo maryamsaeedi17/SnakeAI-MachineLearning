@@ -17,12 +17,6 @@ class Snake(arcade.Sprite):
     def draw(self):
         arcade.draw_rectangle_filled(self.center_x, self.center_y, self.width, self.height, self.color)
 
-        # for part in self.body:
-        #     if len(self.body)%2==0:
-        #         arcade.draw_rectangle_filled(part['x'],part['y'],self.width,self.height,self.color)
-        #     elif len(self.body)%2==1:
-        #         arcade.draw_rectangle_filled(part['x'],part['y'],self.width,self.height,arcade.color.YELLOW)
-
         for i in range(len(self.body)):
             if i%2==0:
                 arcade.draw_rectangle_filled(self.body[i]['x'],self.body[i]['y'],self.width,self.height,self.color)

@@ -14,12 +14,10 @@ class Game(arcade.Window):
 
         self.game_status="run"
 
-
     def on_draw(self):
         arcade.start_render()
         self.snake.draw()
         self.food.draw()
-
 
         arcade.draw_text(f"Score: {self.snake.score}", 8*self.width//10, 20 , arcade.color.WHITE  , bold=True)
 
@@ -67,8 +65,6 @@ class Game(arcade.Window):
                 self.snake.change_x=0
                 self.snake.change_y=0    
 
-
-
         self.snake.move()
 
         if arcade.check_for_collision(self.snake, self.food):
@@ -76,8 +72,6 @@ class Game(arcade.Window):
             self.food=Apple(self)
 
         self.snake.check_pass_limits(self)
-
-
 
 game=Game()
 arcade.run()
