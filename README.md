@@ -25,17 +25,17 @@ pip install -r requirements.txt
 
 - First generate dataset:
 ```
-generate_dataset.py
+python generate_dataset.py
 ```
 
 - Then train neural network:
 ```
-train.py
+python train.py
 ```
 
 - Finally play the game:
 ```
-main_ml.py
+python main_ml.py
 ```
 
 - And enjoy!
